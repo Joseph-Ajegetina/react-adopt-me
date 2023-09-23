@@ -1,13 +1,20 @@
 import React from "react";
-import {render} from "react-dom";
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Details from "./Details";
 
 import SearchParams from "./SearchParams";
 
 const App = () => {
-  return <div>
-    <h1>Adopt Me!</h1>
-    <SearchParams />
-  </div>
+  return (
+    <BrowserRouter>
+      <Link to="/">Adopt Me!</Link>
+      <Routes>
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/" element={<SearchParams />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
-render(<App/>, document.getElementById("root"));
+render(<App />, document.getElementById("root"));
